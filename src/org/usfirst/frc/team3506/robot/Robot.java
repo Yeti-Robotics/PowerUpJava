@@ -7,10 +7,13 @@
 
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.Robot.AutoModes;
-import org.usfirst.frc.team3506.robot.commands.autonomous.CrossDefenseAutonomous;
-import org.usfirst.frc.team3506.robot.commands.commandgroups.ChevalDeFriseBreacherCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.commandgroups.LowBarBreacherCommandGroup;
+import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchLeftAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchRightAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideLeftScaleAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideRightScaleAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.RightSideLeftScaleAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.RightSideRightScaleAutonomous;
 import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
@@ -20,13 +23,6 @@ import org.usfirst.frc.team3506.robot.subsystems.RightDrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ShiftGearsSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.WristSubsystem;
 
-import autoRoutines.CenterSwitchLeftAutonomous;
-import autoRoutines.CenterSwitchRightAutonomous;
-import autoRoutines.DriveForwardAutonomous;
-import autoRoutines.LeftSideLeftScaleAutonomous;
-import autoRoutines.LeftSideRightScaleAutonomous;
-import autoRoutines.RightSideLeftScaleAutonomous;
-import autoRoutines.RightSideRightScaleAutonomous;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;

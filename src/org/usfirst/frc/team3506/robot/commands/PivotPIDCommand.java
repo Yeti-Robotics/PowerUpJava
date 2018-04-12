@@ -1,4 +1,4 @@
-package autoCommands;
+package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
@@ -7,21 +7,29 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveRightSideCommand extends Command {
+public class PivotPIDCommand extends Command {
 
 	private double distance;
+	private boolean turnClockwise;
 	
-    public DriveRightSideCommand(double distance) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drivetrainSubsystem);
-    	this.distance = distance;
+    public PivotPIDCommand(double distance, boolean turnClockwise) {
+        requires(Robot.drivetrainSubsystem);
+        this.distance = distance;
+        this.turnClockwise = turnClockwise;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrainSubsystem.resetEncoders();
-    	Robot.rightDrivetrainSubsystem.setSetpoint(distance);
+
+    	if (turnClockwise) {
+			Robot.leftDrivetrainSubsystem.setSetpoint(distance);
+			Robot.rightDrivetrainSubsystem.setSetpoint(-distance);
+		} else {
+			Robot.leftDrivetrainSubsystem.setSetpoint(-distance);
+			Robot.rightDrivetrainSubsystem.setSetpoint(distance);
+		}
+		Robot.leftDrivetrainSubsystem.enable();
     	Robot.rightDrivetrainSubsystem.enable();
     }
 
@@ -31,11 +39,12 @@ public class DriveRightSideCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.rightDrivetrainSubsystem.onTarget();
+        return Robot.leftDrivetrainSubsystem.onTarget() && Robot.rightDrivetrainSubsystem.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.leftDrivetrainSubsystem.disable();
     	Robot.rightDrivetrainSubsystem.disable();
     }
 

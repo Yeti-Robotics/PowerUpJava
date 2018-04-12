@@ -1,4 +1,4 @@
-package autoCommands;
+package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
@@ -7,32 +7,41 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class OpenClawCommand extends Command {
+public class DriveRightSideCommand extends Command {
 
-    public OpenClawCommand() {
-    	requires(Robot.clampCubeSubsystem);
+	private double distance;
+	
+    public DriveRightSideCommand(double distance) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.drivetrainSubsystem);
+    	this.distance = distance;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drivetrainSubsystem.resetEncoders();
+    	Robot.rightDrivetrainSubsystem.setSetpoint(distance);
+    	Robot.rightDrivetrainSubsystem.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.clampCubeSubsystem.unclampPistons();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Robot.rightDrivetrainSubsystem.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.rightDrivetrainSubsystem.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

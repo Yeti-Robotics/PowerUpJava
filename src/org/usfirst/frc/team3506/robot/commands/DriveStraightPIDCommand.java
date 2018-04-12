@@ -1,4 +1,4 @@
-package autoCommands;
+package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
@@ -7,29 +7,23 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PivotPIDCommand extends Command {
+public class DriveStraightPIDCommand extends Command {
 
 	private double distance;
-	private boolean turnClockwise;
 	
-    public PivotPIDCommand(double distance, boolean turnClockwise) {
+    public DriveStraightPIDCommand(double distance) {
         requires(Robot.drivetrainSubsystem);
         this.distance = distance;
-        this.turnClockwise = turnClockwise;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.drivetrainSubsystem.resetEncoders();
-
-    	if (turnClockwise) {
-			Robot.leftDrivetrainSubsystem.setSetpoint(distance);
-			Robot.rightDrivetrainSubsystem.setSetpoint(-distance);
-		} else {
-			Robot.leftDrivetrainSubsystem.setSetpoint(-distance);
-			Robot.rightDrivetrainSubsystem.setSetpoint(distance);
-		}
-		Robot.leftDrivetrainSubsystem.enable();
+    	
+    	Robot.leftDrivetrainSubsystem.setSetpoint(distance);
+    	Robot.rightDrivetrainSubsystem.setSetpoint(distance);
+    	
+    	Robot.leftDrivetrainSubsystem.enable();
     	Robot.rightDrivetrainSubsystem.enable();
     }
 

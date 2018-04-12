@@ -1,17 +1,15 @@
-package autoCommands;
+package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
-import org.usfirst.frc.team3506.robot.commands.ToggleCubeClamp;
-import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CloseClawCommand extends Command {
+public class OpenClawCommand extends Command {
 
-    public CloseClawCommand() {
+    public OpenClawCommand() {
     	requires(Robot.clampCubeSubsystem);
     }
 
@@ -21,7 +19,7 @@ public class CloseClawCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.clampCubeSubsystem.clampPistons();
+    	Robot.clampCubeSubsystem.unclampPistons();
     }
 
     // Make this return true when this Command no longer needs to run execute()

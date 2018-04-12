@@ -1,4 +1,4 @@
-package autoCommands;
+package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
 

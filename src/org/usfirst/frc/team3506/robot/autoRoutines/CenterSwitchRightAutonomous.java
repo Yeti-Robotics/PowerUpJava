@@ -1,13 +1,13 @@
-package autoRoutines;
+package org.usfirst.frc.team3506.robot.autoRoutines;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class LeftSideRightScaleAutonomous extends CommandGroup {
+public class CenterSwitchRightAutonomous extends CommandGroup {
 
-    public LeftSideRightScaleAutonomous() {
+    public CenterSwitchRightAutonomous() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

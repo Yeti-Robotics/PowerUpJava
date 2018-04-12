@@ -1,14 +1,14 @@
-package autoRoutines;
+package org.usfirst.frc.team3506.robot.autoRoutines;
 
+import org.usfirst.frc.team3506.robot.commands.CloseClawCommand;
+import org.usfirst.frc.team3506.robot.commands.DriveLeftSideCommand;
+import org.usfirst.frc.team3506.robot.commands.DriveRightSideCommand;
+import org.usfirst.frc.team3506.robot.commands.DriveStraightPIDCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveTrainLowShift;
 import org.usfirst.frc.team3506.robot.commands.MoveWristCommand;
+import org.usfirst.frc.team3506.robot.commands.MoveWristTimeCommand;
+import org.usfirst.frc.team3506.robot.commands.OpenClawCommand;
 
-import autoCommands.CloseClawCommand;
-import autoCommands.DriveLeftSideCommand;
-import autoCommands.DriveRightSideCommand;
-import autoCommands.DriveStraightPIDCommand;
-import autoCommands.MoveWristTimeCommand;
-import autoCommands.OpenClawCommand;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
