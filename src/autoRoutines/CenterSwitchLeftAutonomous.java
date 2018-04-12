@@ -1,5 +1,6 @@
 package autoRoutines;
 
+import org.usfirst.frc.team3506.robot.commands.DriveTrainLowShift;
 import org.usfirst.frc.team3506.robot.commands.MoveWristCommand;
 
 import autoCommands.CloseClawCommand;
@@ -17,6 +18,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class CenterSwitchLeftAutonomous extends CommandGroup {
 
     public CenterSwitchLeftAutonomous() {
+    	addSequential(new DriveTrainLowShift());
     	addSequential(new CloseClawCommand());
         addSequential(new DriveRightSideCommand(22));
         addSequential(new DriveStraightPIDCommand(104));
