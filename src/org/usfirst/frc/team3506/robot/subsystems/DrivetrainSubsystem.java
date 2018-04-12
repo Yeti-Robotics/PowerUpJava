@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -36,6 +37,9 @@ public class DrivetrainSubsystem extends Subsystem {
 
 		left2.setInverted(true);
 		right1.setInverted(true);
+
+		SmartDashboard.putNumber("Left drive distance", getLeftEncoderValue());
+		SmartDashboard.putNumber("Right drive distance", getRightEncoderValue());
 	}
 
 	// Resets the encoder values
@@ -46,8 +50,8 @@ public class DrivetrainSubsystem extends Subsystem {
 
 	// Prints drive encoder values to the console
 	public void printEncoders() {
-		System.out.println("RIGHT DRIVE ENCODER: " + rightEnc.getDistance());
-		System.out.println("LEFT DRIVE ENCODER: " + leftEnc.getDistance());
+//		System.out.println("RIGHT DRIVE ENCODER: " + rightEnc.getDistance());
+//		System.out.println("LEFT DRIVE ENCODER: " + leftEnc.getDistance());
 	}
 
 	public double getRightEncoderValue() {
@@ -56,6 +60,10 @@ public class DrivetrainSubsystem extends Subsystem {
 
 	public double getLeftEncoderValue() {
 		return leftEnc.getDistance();
+	}
+	
+	public double getAvgEncoderDistance() {
+		return (Math.abs(getRightEncoderValue()) + Math.abs(getLeftEncoderValue())) / 2;
 	}
 
 	// Controls the right side of the drive train

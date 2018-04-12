@@ -9,7 +9,6 @@ package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchLeftAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchRightAutonomous;
-import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideLeftScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideRightScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.RightSideLeftScaleAutonomous;
@@ -18,8 +17,6 @@ import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.FlywheelSubsystem;
-import org.usfirst.frc.team3506.robot.subsystems.LeftDrivetrainSubsystem;
-import org.usfirst.frc.team3506.robot.subsystems.RightDrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ShiftGearsSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.WristSubsystem;
 
@@ -38,8 +35,6 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 
 	// Instantiates the subsystems
-	public static LeftDrivetrainSubsystem leftDrivetrainSubsystem;
-	public static RightDrivetrainSubsystem rightDrivetrainSubsystem;
 	public static DrivetrainSubsystem drivetrainSubsystem;
 	public static ElevatorSubsystem elevatorSubsystem;
 	public static FlywheelSubsystem flywheelSubsystem;
@@ -62,8 +57,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		leftDrivetrainSubsystem = new LeftDrivetrainSubsystem();
-		rightDrivetrainSubsystem = new RightDrivetrainSubsystem();
 		drivetrainSubsystem = new DrivetrainSubsystem();
 		elevatorSubsystem = new ElevatorSubsystem();
 		flywheelSubsystem = new FlywheelSubsystem();
@@ -138,7 +131,7 @@ public class Robot extends TimedRobot {
 			}
 			break;
 		default:
-			autonomousCommand = new DriveForwardAutonomous();
+			autonomousCommand = new CenterSwitchLeftAutonomous();
 		}
 
 		/*
