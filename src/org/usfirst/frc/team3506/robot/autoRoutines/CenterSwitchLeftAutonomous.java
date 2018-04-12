@@ -8,6 +8,7 @@ import org.usfirst.frc.team3506.robot.commands.OpenClawCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveForDistanceCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -20,19 +21,20 @@ public class CenterSwitchLeftAutonomous extends CommandGroup {
         addSequential(new DriveForDistanceCommand(16, 0, .5));
         addSequential(new DriveStraightCommand(88, .5));
         addSequential(new DriveForDistanceCommand(16, .5, 0));
-        addSequential(new MoveWristTimeCommand(-1, .5));
-        addSequential(new OpenClawCommand()); //Should drop first cube?
-        /*addSequential(new MoveWristTimeCommand(.65, .45));
-        addSequential(new DriveForDistanceCommand(-20, .5, 0));
-        addSequential(new DriveStraightCommand(-84, -.5));
-        addSequential(new DriveForDistanceCommand(-28, 0, -.5));
-        addSequential(new DriveStraightCommand(72, .5));
+        addSequential(new MoveWristTimeCommand(-.5, .5));
+        addSequential(new OpenClawCommand()); //Should drop first cube? no.
+        addParallel(new MoveWristTimeCommand(.5, .5));
+        addSequential(new DriveForDistanceCommand(12, -.5, 0));
+        addSequential(new DriveStraightCommand(84, -.5));
+        addSequential(new DriveForDistanceCommand(18, 0, -.5)); //"don't touch it, i swear!"
+        addSequential(new DriveStraightCommand(70, .5));
         addSequential(new CloseClawCommand());
-    	addSequential(new DriveStraightCommand(-24, -.5));
-    	addSequential(new DriveForDistanceCommand(16, 0, .5));
-    	addParallel(new MoveWristTimeCommand(.70, 1));
-    	addSequential(new DriveStraightCommand(62, .5));
-    	addSequential(new DriveForDistanceCommand(12, .5, 0));
-    	addSequential(new OpenClawCommand());**/
+    	addSequential(new DriveStraightCommand(24, -.5));
+    	addSequential(new DriveForDistanceCommand(13, 0, .5));//"ez, ez auto"
+    	addParallel(new DriveStraightCommand(56, .5));
+    	addSequential(new MoveWristTimeCommand(.55, 1.25));
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new DriveForDistanceCommand(2, .5, 0));
+    	addSequential(new OpenClawCommand());
     }
 }

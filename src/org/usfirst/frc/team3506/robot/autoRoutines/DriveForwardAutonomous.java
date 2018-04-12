@@ -12,6 +12,6 @@ public class DriveForwardAutonomous extends CommandGroup {
 
     public DriveForwardAutonomous() { //ez auto
     	addSequential(new DriveTrainLowShift());
-    	addSequential(new DriveStraightCommand(148, .5)); //robowranglers haha
+    	addSequential(new DriveStraightCommand(150, .5)); //robowranglers haha
     }
 }
