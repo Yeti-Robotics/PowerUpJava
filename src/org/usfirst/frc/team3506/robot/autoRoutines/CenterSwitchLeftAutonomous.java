@@ -23,12 +23,12 @@ public class CenterSwitchLeftAutonomous extends CommandGroup {
         addSequential(new DriveRightSideCommand(22));
         addSequential(new DriveStraightPIDCommand(104));
         addSequential(new DriveLeftSideCommand(10));
-        addParallel(new MoveWristTimeCommand(-.5, .6));
-        addSequential(new OpenClawCommand());
-        addSequential(new WaitCommand(.5));
+        addParallel(new MoveWristTimeCommand(-.5, .5));
+        addSequential(new OpenClawCommand()); //Should drop first cube?
         addSequential(new DriveLeftSideCommand(-24));
         addSequential(new DriveStraightPIDCommand(-84));
         addSequential(new DriveRightSideCommand(-28));
         addSequential(new DriveStraightPIDCommand(48));
+        addSequential(new CloseClawCommand());
     }
 }
