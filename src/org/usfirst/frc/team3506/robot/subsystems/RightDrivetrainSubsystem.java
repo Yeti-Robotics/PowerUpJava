@@ -23,7 +23,7 @@ public class RightDrivetrainSubsystem extends PIDSubsystem {
 
     @Override
     protected double returnPIDInput() {
-        return Robot.drivetrainSubsystem.getRightEncoderValue();
+        return Robot.drivetrainSubsystem.getRightEncoderDistance();
     }
 
     @Override

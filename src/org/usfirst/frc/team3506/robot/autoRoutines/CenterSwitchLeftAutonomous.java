@@ -5,7 +5,6 @@ import org.usfirst.frc.team3506.robot.commands.DriveLeftSideCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveRightSideCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveStraightPIDCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveTrainLowShift;
-import org.usfirst.frc.team3506.robot.commands.MoveWristCommand;
 import org.usfirst.frc.team3506.robot.commands.MoveWristTimeCommand;
 import org.usfirst.frc.team3506.robot.commands.OpenClawCommand;
 

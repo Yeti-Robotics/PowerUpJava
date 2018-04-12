@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
-import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 

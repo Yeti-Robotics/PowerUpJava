@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 	public static ShiftGearsSubsystem shiftGearsSubsystem;
 	public static ClampCubeSubsystem clampCubeSubsystem;
 
-	public SendableChooser autoChooser;
+	public SendableChooser<AutoModes> autoChooser;
 
 	public static enum AutoModes {
 		DRIVE_FORWARD, CENTER_SWITCH, LEFT_SCALE, RIGHT_SCALE
@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
 		shiftGearsSubsystem = new ShiftGearsSubsystem();
 		clampCubeSubsystem = new ClampCubeSubsystem();
 		oi = new OI();
-		autoChooser = new SendableChooser();
+		autoChooser = new SendableChooser<AutoModes>();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser.addDefault("Drive forward", AutoModes.DRIVE_FORWARD);
 		autoChooser.addObject("Center switch", AutoModes.CENTER_SWITCH);
@@ -171,6 +171,13 @@ public class Robot extends TimedRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
+		}
+		
+		if (drivetrainSubsystem.getLeftEncoderRate() > drivetrainSubsystem.leftMaxRate) {
+			drivetrainSubsystem.leftMaxRate = drivetrainSubsystem.getLeftEncoderRate();
+		}
+		if (drivetrainSubsystem.getRightEncoderRate() > drivetrainSubsystem.rightMaxRate) {
+			drivetrainSubsystem.rightMaxRate = drivetrainSubsystem.getRightEncoderRate();
 		}
 	}
 
