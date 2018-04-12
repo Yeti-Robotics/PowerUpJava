@@ -8,9 +8,6 @@
 package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.Robot.AutoModes;
-import org.usfirst.frc.team3506.robot.commands.autonomous.CrossDefenseAutonomous;
-import org.usfirst.frc.team3506.robot.commands.commandgroups.ChevalDeFriseBreacherCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.commandgroups.LowBarBreacherCommandGroup;
 import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
@@ -114,31 +111,28 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage(); //gets game data
-		
+		gameData = DriverStation.getInstance().getGameSpecificMessage(); // gets game data
+
 		switch ((AutoModes) autoChooser.getSelected()) {
 		case CENTER_SWITCH:
 			if (gameData.charAt(0) == 'L') {
 				autonomousCommand = new CenterSwitchLeftAutonomous();
-			}
-			else {
-				autonomousCommand = new CenterSwitchRightAutonomous(); //TODO: Create this auto
+			} else {
+				autonomousCommand = new CenterSwitchRightAutonomous(); // TODO: Create this auto
 			}
 			break;
 		case LEFT_SCALE:
 			if (gameData.charAt(1) == 'L') {
-				autonomousCommand = new LeftSideLeftScaleAutonomous(); //TODO: Create this auto
-			}
-			else {
-				autonomousCommand = new LeftSideRightScaleAutonomous(); //TODO: Create this auto
+				autonomousCommand = new LeftSideLeftScaleAutonomous(); // TODO: Create this auto
+			} else {
+				autonomousCommand = new LeftSideRightScaleAutonomous(); // TODO: Create this auto
 			}
 			break;
 		case RIGHT_SCALE:
 			if (gameData.charAt(1) == 'L') {
-				autonomousCommand = new RightSideLeftScaleAutonomous(); //TODO: Create this auto
-			}
-			else {
-				autonomousCommand = new RightSideRightScaleAutonomous(); //TODO: Create this auto
+				autonomousCommand = new RightSideLeftScaleAutonomous(); // TODO: Create this auto
+			} else {
+				autonomousCommand = new RightSideRightScaleAutonomous(); // TODO: Create this auto
 			}
 			break;
 		default:
