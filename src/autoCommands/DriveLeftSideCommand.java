@@ -1,0 +1,47 @@
+package autoCommands;
+
+import org.usfirst.frc.team3506.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class DriveLeftSideCommand extends Command {
+
+	private double distance;
+	
+    public DriveLeftSideCommand(double distance) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.drivetrainSubsystem);
+    	this.distance = distance;
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	Robot.drivetrainSubsystem.resetEncoders();
+    	Robot.leftDrivetrainSubsystem.setSetpoint(distance);
+    	Robot.leftDrivetrainSubsystem.enable();
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+        return Robot.leftDrivetrainSubsystem.onTarget();
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+    	Robot.leftDrivetrainSubsystem.disable();
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+    	end();
+    }
+}
