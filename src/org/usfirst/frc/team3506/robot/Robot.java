@@ -14,6 +14,7 @@ import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideLeftScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideRightScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.RightSideLeftScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.RightSideRightScaleAutonomous;
+import org.usfirst.frc.team3506.robot.commands.PathfinderCommand;
 import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
@@ -46,6 +47,7 @@ public class Robot extends TimedRobot {
 	public static WristSubsystem wristSubsystem;
 	public static ShiftGearsSubsystem shiftGearsSubsystem;
 	public static ClampCubeSubsystem clampCubeSubsystem;
+	public static DriverStation driverStation;
 
 	public SendableChooser<AutoModes> autoChooser;
 
@@ -78,6 +80,7 @@ public class Robot extends TimedRobot {
 		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
 		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
+		driverStation = DriverStation.getInstance();
 	}
 
 	/**
@@ -140,6 +143,8 @@ public class Robot extends TimedRobot {
 		default:
 			autonomousCommand = new DriveForwardAutonomous();
 		}
+		
+		autonomousCommand = new PathfinderCommand();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -188,6 +193,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		drivetrainSubsystem.printEncoders();
+		System.out.println(drivetrainSubsystem.getLeftEncoderDistance() + ", " + drivetrainSubsystem.getRightEncoderDistance() + ", " + drivetrainSubsystem.getLeftEncoderRate() + ", " + drivetrainSubsystem.getRightEncoderRate());
 	}
 
 	/**

@@ -9,9 +9,11 @@ package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.commands.DriveTrainHighShift;
 import org.usfirst.frc.team3506.robot.commands.DriveTrainLowShift;
+import org.usfirst.frc.team3506.robot.commands.FalconPathfinderCommand;
 import org.usfirst.frc.team3506.robot.commands.FlywheelIntakeCommand;
 import org.usfirst.frc.team3506.robot.commands.FlywheelOuttakeCommand;
 import org.usfirst.frc.team3506.robot.commands.LowerElevatorCommand;
+import org.usfirst.frc.team3506.robot.commands.PathfinderCommand;
 import org.usfirst.frc.team3506.robot.commands.RaiseElevatorCommand;
 import org.usfirst.frc.team3506.robot.commands.ToggleCubeClamp;
 
@@ -40,6 +42,11 @@ public class OI {
 		setJoystickButtonWhenPressedCommand(leftJoy, 1, new DriveTrainLowShift());
 		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
 		setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
+		
+		
+		
+		setJoystickButtonWhenPressedCommand(secondaryJoy, 11, new FalconPathfinderCommand());
+		setJoystickButtonWhenPressedCommand(secondaryJoy, 12, new PathfinderCommand());
 	}
 	
 	//Gets the Y direction of the left drive joystick

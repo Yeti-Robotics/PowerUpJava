@@ -14,7 +14,7 @@ package org.usfirst.frc.team3506.robot;
  */
 public class RobotMap {
 	// Physical Constants
-	public static final int WHEEL_DIAMETER = 6; // inches
+	public static final double WHEEL_DIAMETER = 5.875 / 12.0; // inches
 	public static final double PULSES_PER_REVOLUTION = 2048;
 	public static final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSES_PER_REVOLUTION;
 
@@ -26,8 +26,10 @@ public class RobotMap {
 	// Drive train sparks
 	public static final int LEFT_1_SPARK = 0;
 	public static final int LEFT_2_SPARK = 7;
+	public static final int LEFT_3_SPARK = 8;
 	public static final int RIGHT_1_SPARK = 1;
 	public static final int RIGHT_2_SPARK = 9;
+	public static final int RIGHT_3_SPARK = 10;
 
 	// Gyro port
 	public static final int GYRO_PORT = 0;
@@ -37,7 +39,8 @@ public class RobotMap {
 	public static final double DRIVE_D = .01;
 
 	// Elevator sparks
-	public static final int ELEVATOR_SPARK = 5;
+	public static final int LEFT_ELEVATOR_TALON = 5;
+	public static final int RIGHT_ELEVATOR_TALON = 6;
 
 	// Elevator Speeds
 	public static final double ELEVATOR_UP_SPEED = 1;
@@ -45,7 +48,8 @@ public class RobotMap {
 	public static final double ELEVATOR_STOP_SPEED = 0;
 
 	// Flywheel sparks
-	public static final int FLYWHEEL_SPARK = 3;
+	public static final int LEFT_FLYWHEEL_TALON = 3;
+	public static final int RIGHT_FLYWHEEL_TALON = 4;
 
 	// Flywheel speeds
 	public static final double FLYWHEEL_INTAKE_SPEED = 1;
@@ -53,7 +57,7 @@ public class RobotMap {
 	public static final double FLYWHEEL_STOP_SPEED = 0;
 
 	// Wrist sparks
-	public static final int WRIST_SPARK = 2;
+	public static final int WRIST_TALON = 2;
 
 	// Drive train solenoid
 	public static final int[] DRIVE_TRAIN_SHIFT = { 6, 7 };
@@ -67,11 +71,11 @@ public class RobotMap {
 	public static final int[] WRIST_ENCODER = { 6, 7 };
 	public static final int[] LIFT_ENCODER = { 4, 5 };
 
-	// Pathfinder constants
-	public static final double LOOP_TIME = .05;
-	public static final double MAX_VELOCITY = 1.2;
-	public static final double MAX_ACCELERATION = 2;
-	public static final double MAX_JERK = 10;
+	// Pathfinder constants (inches)
+	public static final double LOOP_TIME = .02;
+	public static final double MAX_VELOCITY = 84;
+	public static final double MAX_ACCELERATION = 96;
+	public static final double MAX_JERK = 60;
 	public static final double TRACK_WIDTH = 24;
 	public static final double VELOCITY_TO_POWER_MOD = 1 / MAX_VELOCITY;
 	public static final double ACCELERATION_GAIN = 0;
