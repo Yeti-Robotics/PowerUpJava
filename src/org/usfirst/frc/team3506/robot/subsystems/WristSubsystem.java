@@ -3,6 +3,8 @@ package org.usfirst.frc.team3506.robot.subsystems;
 import org.usfirst.frc.team3506.robot.RobotMap;
 import org.usfirst.frc.team3506.robot.commands.MoveWristCommand;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -11,11 +13,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class WristSubsystem extends Subsystem {
 	
-	private Spark wrist;
+	private WPI_TalonSRX wrist;
 	
 	public WristSubsystem() {
 		//Creates a wrist motor object
-		wrist = new Spark(RobotMap.WRIST_SPARK);
+		wrist = new WPI_TalonSRX(RobotMap.WRIST_TALON);
 	}
 	
 	//Allows variable movement using a joystick

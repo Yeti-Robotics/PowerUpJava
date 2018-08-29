@@ -2,7 +2,8 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Spark;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -10,26 +11,30 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class FlywheelSubsystem extends Subsystem {
 
-private Spark flywheel;
+private WPI_TalonSRX leftFlywheel, rightFlywheel;
 	
 	public FlywheelSubsystem() {
 		//Creates a flywheel motor object connected to its spark
-		flywheel = new Spark(RobotMap.FLYWHEEL_SPARK);
+	    leftFlywheel = new WPI_TalonSRX(RobotMap.LEFT_FLYWHEEL_TALON);
+		rightFlywheel = new WPI_TalonSRX(RobotMap.RIGHT_FLYWHEEL_TALON);
 	}
 
 	//Spins the motors to intake the cube
 	public void intakeCube() {
-		flywheel.set(RobotMap.FLYWHEEL_INTAKE_SPEED);
+	    leftFlywheel.set(RobotMap.FLYWHEEL_INTAKE_SPEED);
+	    rightFlywheel.set(RobotMap.FLYWHEEL_INTAKE_SPEED);
 	}
 	
 	//Spins the motors to spit the cube
 	public void outtakeCube() {
-		flywheel.set(RobotMap.FLYWHEEL_OUTTAKE_SPEED);
+	    leftFlywheel.set(RobotMap.FLYWHEEL_OUTTAKE_SPEED);
+	    rightFlywheel.set(RobotMap.FLYWHEEL_OUTTAKE_SPEED);
 	}
 	
 	//Stops the flywheels from spinning
 	public void stopFlywheels() {
-		flywheel.set(RobotMap.FLYWHEEL_STOP_SPEED);
+	    leftFlywheel.set(RobotMap.FLYWHEEL_STOP_SPEED);
+	    rightFlywheel.set(RobotMap.FLYWHEEL_STOP_SPEED);
 	}
 	
     public void initDefaultCommand() {
