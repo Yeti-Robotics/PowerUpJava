@@ -16,7 +16,7 @@ private WPI_TalonSRX leftFlywheel, rightFlywheel;
 	public FlywheelSubsystem() {
 		//Creates a flywheel motor object connected to its spark
 	    leftFlywheel = new WPI_TalonSRX(RobotMap.LEFT_FLYWHEEL_TALON);
-		rightFlywheel = new WPI_TalonSRX(RobotMap.LEFT_FLYWHEEL_TALON);
+		rightFlywheel = new WPI_TalonSRX(RobotMap.RIGHT_FLYWHEEL_TALON);
 	}
 
 	//Spins the motors to intake the cube
