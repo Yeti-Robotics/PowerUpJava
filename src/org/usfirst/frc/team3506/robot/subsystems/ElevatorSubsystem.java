@@ -20,6 +20,7 @@ private WPI_TalonSRX leftElevator, rightElevator;
 		
 		//Because of the way it was wired, the elevator motors will run in reverse
 		leftElevator.setInverted(true);
+		rightElevator.setInverted(true);
 	}
 
 	//Moves the elevator up
