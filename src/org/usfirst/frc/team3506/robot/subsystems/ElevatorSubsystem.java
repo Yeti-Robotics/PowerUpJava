@@ -2,6 +2,7 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,6 +22,10 @@ private WPI_TalonSRX leftElevator, rightElevator;
 		//Because of the way it was wired, the elevator motors will run in reverse
 		leftElevator.setInverted(true);
 		rightElevator.setInverted(true);
+		
+		//Set the talons' neutral state to brake mode
+		leftElevator.setNeutralMode(NeutralMode.Brake);
+		rightElevator.setNeutralMode(NeutralMode.Brake);
 	}
 
 	//Moves the elevator up

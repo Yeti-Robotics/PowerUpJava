@@ -13,7 +13,9 @@ import org.usfirst.frc.team3506.robot.commands.FlywheelIntakeCommand;
 import org.usfirst.frc.team3506.robot.commands.FlywheelOuttakeCommand;
 import org.usfirst.frc.team3506.robot.commands.LowerElevatorCommand;
 import org.usfirst.frc.team3506.robot.commands.RaiseElevatorCommand;
+import org.usfirst.frc.team3506.robot.commands.SetDriveModeCommand;
 import org.usfirst.frc.team3506.robot.commands.ToggleCubeClamp;
+import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem.DriveMode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -32,14 +34,21 @@ public class OI {
 		rightJoy = new Joystick(RobotMap.RIGHT_JOYSTICK);
 		secondaryJoy = new Joystick(RobotMap.SECONDARY_JOYSTICK);
 		
-		//Sets each task to a button
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
+		//Left joystick buttons
+		setJoystickButtonWhenPressedCommand(leftJoy, 1, new DriveTrainLowShift());
+		
+		//Right joystick buttons
+		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
+		
+		//Secondary joystick buttons
 		setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelIntakeCommand());
 		setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelOuttakeCommand());
-		setJoystickButtonWhenPressedCommand(leftJoy, 1, new DriveTrainLowShift());
-		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
-		setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
+		setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
+        setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
+        setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
+        setJoystickButtonWhenPressedCommand(secondaryJoy, 10, new SetDriveModeCommand(DriveMode.TANK));
+        setJoystickButtonWhenPressedCommand(secondaryJoy, 11, new SetDriveModeCommand(DriveMode.ARCADE));
+        setJoystickButtonWhenPressedCommand(secondaryJoy, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
 	}
 	
 	//Gets the Y direction of the left drive joystick

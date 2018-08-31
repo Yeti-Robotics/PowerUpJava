@@ -19,7 +19,18 @@ public class UserDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrainSubsystem.tankDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+    	switch (Robot.drivetrainSubsystem.getDriveMode()) {
+    	    case TANK: 
+    	        Robot.drivetrainSubsystem.tankDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+    	     break;  
+    	    case ARCADE: 
+                Robot.drivetrainSubsystem.arcadeDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+             break;   
+    	    case CHEEZY: 
+                Robot.drivetrainSubsystem.cheezyDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+             break;   
+    	        
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

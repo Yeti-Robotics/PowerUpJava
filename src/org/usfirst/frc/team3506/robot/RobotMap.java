@@ -25,11 +25,11 @@ public class RobotMap {
 
 	// Drive train sparks
 	public static final int LEFT_1_SPARK = 0;
-	public static final int LEFT_2_SPARK = 7;
-	public static final int LEFT_3_SPARK = 8;
-	public static final int RIGHT_1_SPARK = 1;
-	public static final int RIGHT_2_SPARK = 9;
-	public static final int RIGHT_3_SPARK = 10;
+	public static final int LEFT_2_SPARK = 1;
+	public static final int LEFT_3_SPARK = 2;
+	public static final int RIGHT_1_SPARK = 3;
+	public static final int RIGHT_2_SPARK = 4;
+	public static final int RIGHT_3_SPARK = 5;
 
 	// Gyro port
 	public static final int GYRO_PORT = 0;
@@ -38,7 +38,7 @@ public class RobotMap {
 	public static final double DRIVE_I = .05;
 	public static final double DRIVE_D = .01;
 
-	// Elevator sparks
+	// Elevator talons
 	public static final int LEFT_ELEVATOR_TALON = 5;
 	public static final int RIGHT_ELEVATOR_TALON = 6;
 
@@ -47,7 +47,7 @@ public class RobotMap {
 	public static final double ELEVATOR_DOWN_SPEED = -.75;
 	public static final double ELEVATOR_STOP_SPEED = 0;
 
-	// Flywheel sparks
+	// Flywheel talons
 	public static final int LEFT_FLYWHEEL_TALON = 3;
 	public static final int RIGHT_FLYWHEEL_TALON = 4;
 
@@ -55,8 +55,11 @@ public class RobotMap {
 	public static final double FLYWHEEL_INTAKE_SPEED = 1;
 	public static final double FLYWHEEL_OUTTAKE_SPEED = -.75;
 	public static final double FLYWHEEL_STOP_SPEED = 0;
+	public static final int FLYWHEEL_CONTINUOUS_CURRENT_LIMIT= 20; // Amps
+	public static final int FLYWHEEL_PEAK_CURRENT_LIMIT= 35; // Amps
+	public static final int FLYWHEEL_PEAK_CURRENT_DURATION= 200; // ms
 
-	// Wrist sparks
+	// Wrist talon
 	public static final int WRIST_TALON = 2;
 
 	// Drive train solenoid
