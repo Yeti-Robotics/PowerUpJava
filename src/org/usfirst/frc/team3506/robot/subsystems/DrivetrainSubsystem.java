@@ -56,6 +56,8 @@ public class DrivetrainSubsystem extends Subsystem {
 
 		SmartDashboard.putNumber("Left drive distance", getLeftEncoderValue());
 		SmartDashboard.putNumber("Right drive distance", getRightEncoderValue());
+		
+		driveMode = DriveMode.TANK;
 	}
     
     public DriveMode getDriveMode() {

@@ -58,7 +58,12 @@ public class OI {
 	
 	//Gets the Y direction of the right drive joystick
 	public double getRightY() {
-		return rightJoy.getY();
+	    return rightJoy.getY();
+	}
+	
+	//Gets the X direction of the right drive joystick
+	public double getRightX() {
+		return rightJoy.getX();
 	}
 	
 	//Gets the Y direction of the secondary joystick

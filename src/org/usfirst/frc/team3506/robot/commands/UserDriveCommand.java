@@ -24,12 +24,11 @@ public class UserDriveCommand extends Command {
     	        Robot.drivetrainSubsystem.tankDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
     	     break;  
     	    case ARCADE: 
-                Robot.drivetrainSubsystem.arcadeDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+                Robot.drivetrainSubsystem.arcadeDrive(Robot.oi.getLeftY(), Robot.oi.getRightX());
              break;   
     	    case CHEEZY: 
-                Robot.drivetrainSubsystem.cheezyDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
-             break;   
-    	        
+                Robot.drivetrainSubsystem.cheezyDrive(Robot.oi.getLeftY(), Robot.oi.getRightX());
+             break;
     	}
     }
 
