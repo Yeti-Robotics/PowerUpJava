@@ -18,6 +18,7 @@ private WPI_TalonSRX leftFlywheel, rightFlywheel;
 		//Creates a flywheel motor object connected to its spark
 	    leftFlywheel = new WPI_TalonSRX(RobotMap.LEFT_FLYWHEEL_TALON);
 		rightFlywheel = new WPI_TalonSRX(RobotMap.RIGHT_FLYWHEEL_TALON);
+		rightFlywheel.setInverted(true);
 		
 		//Enabling current limiting for left and right flywheel talons
 		leftFlywheel.configContinuousCurrentLimit(RobotMap.FLYWHEEL_CONTINUOUS_CURRENT_LIMIT, 0);

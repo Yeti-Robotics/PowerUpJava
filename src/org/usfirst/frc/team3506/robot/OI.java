@@ -41,8 +41,8 @@ public class OI {
 		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
 		
 		//Secondary joystick buttons
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelIntakeCommand());
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelOuttakeCommand());
+		setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelIntakeCommand());
+		setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelOuttakeCommand());
 		setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
         setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
         setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());

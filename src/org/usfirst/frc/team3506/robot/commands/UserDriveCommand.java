@@ -21,7 +21,7 @@ public class UserDriveCommand extends Command {
     protected void execute() {
     	switch (Robot.drivetrainSubsystem.getDriveMode()) {
     	    case TANK: 
-    	        Robot.drivetrainSubsystem.tankDrive(Robot.oi.getLeftY(), Robot.oi.getRightY());
+    	        Robot.drivetrainSubsystem.tankDrive(Robot.oi.getLeftY(), -Robot.oi.getRightY());
     	     break;  
     	    case ARCADE: 
                 Robot.drivetrainSubsystem.arcadeDrive(Robot.oi.getLeftY(), Robot.oi.getRightX());
