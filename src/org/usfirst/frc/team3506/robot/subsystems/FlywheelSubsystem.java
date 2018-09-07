@@ -21,14 +21,14 @@ private WPI_TalonSRX leftFlywheel, rightFlywheel;
 		rightFlywheel.setInverted(true);
 		
 		//Enabling current limiting for left and right flywheel talons
-		leftFlywheel.configContinuousCurrentLimit(RobotMap.FLYWHEEL_CONTINUOUS_CURRENT_LIMIT, 0);
-		leftFlywheel.configPeakCurrentLimit(RobotMap.FLYWHEEL_PEAK_CURRENT_LIMIT, 0);
-		leftFlywheel.configPeakCurrentDuration(RobotMap.FLYWHEEL_PEAK_CURRENT_DURATION, 0);
+		leftFlywheel.configContinuousCurrentLimit(RobotMap.CONTINUOUS_CURRENT_LIMIT, 0);
+		leftFlywheel.configPeakCurrentLimit(RobotMap.PEAK_CURRENT_LIMIT, 0);
+		leftFlywheel.configPeakCurrentDuration(RobotMap.PEAK_CURRENT_DURATION, 0);
 		leftFlywheel.enableCurrentLimit(true);
 		
-		rightFlywheel.configContinuousCurrentLimit(RobotMap.FLYWHEEL_CONTINUOUS_CURRENT_LIMIT, 0);
-		rightFlywheel.configPeakCurrentLimit(RobotMap.FLYWHEEL_PEAK_CURRENT_LIMIT, 0);
-		rightFlywheel.configPeakCurrentDuration(RobotMap.FLYWHEEL_PEAK_CURRENT_DURATION, 0);
+		rightFlywheel.configContinuousCurrentLimit(RobotMap.CONTINUOUS_CURRENT_LIMIT, 0);
+		rightFlywheel.configPeakCurrentLimit(RobotMap.PEAK_CURRENT_LIMIT, 0);
+		rightFlywheel.configPeakCurrentDuration(RobotMap.PEAK_CURRENT_DURATION, 0);
 		rightFlywheel.enableCurrentLimit(true);
 
         //Set the talons' neutral state to brake mode
