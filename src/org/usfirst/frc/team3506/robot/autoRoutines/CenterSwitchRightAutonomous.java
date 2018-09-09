@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CenterSwitchRightAutonomous extends CommandGroup {
 
     public CenterSwitchRightAutonomous() {
-        addSequential(new DriveTrainLowShift());
+    	addSequential(new DriveTrainLowShift());
         addSequential(new CloseClawCommand());
-        addSequential(new DriveForDistanceCommand(26, 0.8, 0));
+        addSequential(new DriveForDistanceCommand(18, 0.8, 0));
         addSequential(new DriveStraightCommand(80, .8));
         addSequential(new DriveForDistanceCommand(18, 0, 0.8));
         addSequential(new MoveWristTimeCommand(-.4, .5));

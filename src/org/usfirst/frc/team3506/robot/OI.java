@@ -44,31 +44,16 @@ public class OI {
 		
 		//Left joystick buttons
 		setJoystickButtonWhenPressedCommand(leftJoy, 1, new DriveTrainLowShift());
-		setJoystickButtonWhenPressedCommand(leftJoy, 3, new ResetEncodersCommand());
 		
 		//Right joystick buttons
 		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
-		setJoystickButtonWhenPressedCommand(rightJoy, 3, new DriveStraightForTimeCommand(2, .8));
 		
-//		if (!RobotMap.USE_GAMEPAD) {
-            //Secondary joystick buttons
-            setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelIntakeCommand());
-            setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelOuttakeCommand());
-            setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
-            setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
-            setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
-            setJoystickButtonWhenPressedCommand(secondaryJoy, 10, new SetDriveModeCommand(DriveMode.TANK));
-            setJoystickButtonWhenPressedCommand(secondaryJoy, 11, new SetDriveModeCommand(DriveMode.ARCADE));
-            setJoystickButtonWhenPressedCommand(secondaryJoy, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
-//        } else {
-//            //Gamepad buttons
-//            setJoystickButtonWhilePressedCommand(gamepad, 6, new FlywheelIntakeCommand());
-//            setJoystickButtonWhilePressedCommand(gamepad, 5, new FlywheelOuttakeCommand());
-//            setJoystickButtonWhenPressedCommand(gamepad, 2, new ToggleCubeClamp());
-//            setJoystickButtonWhenPressedCommand(gamepad, 10, new SetDriveModeCommand(DriveMode.TANK));
-//            setJoystickButtonWhenPressedCommand(gamepad, 11, new SetDriveModeCommand(DriveMode.ARCADE));
-//            setJoystickButtonWhenPressedCommand(gamepad, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
-//        }
+        //Secondary joystick buttons
+        setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelIntakeCommand());
+        setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelOuttakeCommand());
+        setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
+        setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
+        setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
 	}
 	
 	//Gets the Y direction of the left drive joystick

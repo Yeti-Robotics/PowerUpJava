@@ -7,7 +7,9 @@
 
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchAutonomous;
+import org.usfirst.frc.team3506.robot.Robot.AutoModes;
+import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchLeftAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchRightAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideLeftScaleAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideRightScaleAutonomous;
@@ -42,8 +44,7 @@ public class Robot extends TimedRobot {
 	public static ShiftGearsSubsystem shiftGearsSubsystem;
 	public static ClampCubeSubsystem clampCubeSubsystem;
 
-	public SendableChooser autoChooser;
-	public static String gameData = "C";
+	public SendableChooser<AutoModes> autoChooser;
 
 	public static enum AutoModes {
 		DRIVE_FORWARD, CENTER_SWITCH, LEFT_SCALE, RIGHT_SCALE
@@ -65,10 +66,9 @@ public class Robot extends TimedRobot {
 		shiftGearsSubsystem = new ShiftGearsSubsystem();
 		clampCubeSubsystem = new ClampCubeSubsystem();
 		oi = new OI();
-		autoChooser = new SendableChooser();
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		autoChooser.addDefault("Drive forward", new DriveForwardAutonomous());
-		autoChooser.addObject("Center switch", new CenterSwitchAutonomous());
+		autoChooser = new SendableChooser<AutoModes>();
+		autoChooser.addDefault("Drive forward", AutoModes.DRIVE_FORWARD);
+		autoChooser.addObject("Center switch", AutoModes.CENTER_SWITCH);
 		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
 		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -103,22 +103,22 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		gameData = DriverStation.getInstance().getGameSpecificMessage(); //gets game data
+		String gameData = DriverStation.getInstance().getGameSpecificMessage(); //gets game data
         System.out.println("Char: " + gameData.charAt(0));
         System.out.println(autoChooser.getSelected());
 		
-//		switch ((AutoModes) autoChooser.getSelected()) {
-//    		case CENTER_SWITCH:
-//    		    System.out.println("center switch");
-//    			if (gameData.charAt(0) == 'L') {
-////    				autonomousCommand = new CenterSwitchLeftAutonomous();
-//    				System.out.println("center left");
-////    				System.out.println(gameData.charAt(0));
-//    			} else {
-////    				autonomousCommand = new CenterSwitchRightAutonomous(); //TODO: Create this auto
-//                    System.out.println("center right");
-//    			}
-//    			break;
+		switch ((AutoModes) autoChooser.getSelected()) {
+    		case CENTER_SWITCH:
+    		    System.out.println("center switch");
+    			if (gameData.charAt(0) == 'L') {
+    				autonomousCommand = new CenterSwitchLeftAutonomous();
+    				System.out.println("center left");
+//    				System.out.println(gameData.charAt(0));
+    			} else {
+    				autonomousCommand = new CenterSwitchRightAutonomous(); //TODO: Create this auto
+                    System.out.println("center right");
+    			}
+    			break;
 //    		case LEFT_SCALE:
 //    		    System.out.println("left scale");
 //    			if (gameData.charAt(1) == 'L') {
@@ -137,10 +137,10 @@ public class Robot extends TimedRobot {
 //    				autonomousCommand = new RightSideRightScaleAutonomous(); //TODO: Create this auto
 //    			}
 //    			break;
-//    		default:
-////    			autonomousCommand = new CenterSwitchLeftAutonomous();
-//    			System.out.println("default");
-//		}
+    		default:
+    			autonomousCommand = new DriveForwardAutonomous();
+    			System.out.println("default");
+		}
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -150,7 +150,7 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-        autonomousCommand = (Command) autoChooser.getSelected();
+//        autonomousCommand = (Command) autoChooser.getSelected();
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}
