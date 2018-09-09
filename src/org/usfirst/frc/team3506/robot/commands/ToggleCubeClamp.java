@@ -21,15 +21,13 @@ public class ToggleCubeClamp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.clampCubeSubsystem.getPistonPosition() == Value.kForward) {
+    	if (Robot.clampCubeSubsystem.getPistonPosition() == Value.kReverse) {
     		Robot.clampCubeSubsystem.unclampPistons();
     		Robot.flywheelSubsystem.setCurrentLimiting(false);
     	} else {
     		Robot.clampCubeSubsystem.clampPistons();
             Robot.flywheelSubsystem.setCurrentLimiting(true);
     	}
-    	
-    	
     }
     
 

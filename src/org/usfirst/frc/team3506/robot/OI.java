@@ -7,17 +7,23 @@
 
 package org.usfirst.frc.team3506.robot;
 
+import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.DriveStraightForTimeCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveTrainHighShift;
 import org.usfirst.frc.team3506.robot.commands.DriveTrainLowShift;
 import org.usfirst.frc.team3506.robot.commands.FlywheelIntakeCommand;
 import org.usfirst.frc.team3506.robot.commands.FlywheelOuttakeCommand;
 import org.usfirst.frc.team3506.robot.commands.LowerElevatorCommand;
 import org.usfirst.frc.team3506.robot.commands.RaiseElevatorCommand;
+import org.usfirst.frc.team3506.robot.commands.ResetEncodersCommand;
 import org.usfirst.frc.team3506.robot.commands.SetDriveModeCommand;
 import org.usfirst.frc.team3506.robot.commands.ToggleCubeClamp;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem.DriveMode;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,33 +33,52 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class OI {
 	private Joystick leftJoy, rightJoy, secondaryJoy; //what is joyful about robots...
+	private XboxController gamepad;
 	
 	public OI() {
 		//Creates joystick objects for use
 		leftJoy = new Joystick(RobotMap.LEFT_JOYSTICK);
 		rightJoy = new Joystick(RobotMap.RIGHT_JOYSTICK);
 		secondaryJoy = new Joystick(RobotMap.SECONDARY_JOYSTICK);
+		gamepad = new XboxController(RobotMap.GAMEPAD);
 		
 		//Left joystick buttons
 		setJoystickButtonWhenPressedCommand(leftJoy, 1, new DriveTrainLowShift());
+		setJoystickButtonWhenPressedCommand(leftJoy, 3, new ResetEncodersCommand());
 		
 		//Right joystick buttons
 		setJoystickButtonWhenPressedCommand(rightJoy, 1, new DriveTrainHighShift());
+		setJoystickButtonWhenPressedCommand(rightJoy, 3, new DriveStraightForTimeCommand(2, .8));
 		
-		//Secondary joystick buttons
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelIntakeCommand());
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelOuttakeCommand());
-		setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
-        setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
-        setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
-        setJoystickButtonWhenPressedCommand(secondaryJoy, 10, new SetDriveModeCommand(DriveMode.TANK));
-        setJoystickButtonWhenPressedCommand(secondaryJoy, 11, new SetDriveModeCommand(DriveMode.ARCADE));
-        setJoystickButtonWhenPressedCommand(secondaryJoy, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
+//		if (!RobotMap.USE_GAMEPAD) {
+            //Secondary joystick buttons
+            setJoystickButtonWhilePressedCommand(secondaryJoy, 2, new FlywheelIntakeCommand());
+            setJoystickButtonWhilePressedCommand(secondaryJoy, 1, new FlywheelOuttakeCommand());
+            setJoystickButtonWhilePressedCommand(secondaryJoy, 3, new LowerElevatorCommand());
+            setJoystickButtonWhenPressedCommand(secondaryJoy, 4, new ToggleCubeClamp());
+            setJoystickButtonWhilePressedCommand(secondaryJoy, 5, new RaiseElevatorCommand());
+            setJoystickButtonWhenPressedCommand(secondaryJoy, 10, new SetDriveModeCommand(DriveMode.TANK));
+            setJoystickButtonWhenPressedCommand(secondaryJoy, 11, new SetDriveModeCommand(DriveMode.ARCADE));
+            setJoystickButtonWhenPressedCommand(secondaryJoy, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
+//        } else {
+//            //Gamepad buttons
+//            setJoystickButtonWhilePressedCommand(gamepad, 6, new FlywheelIntakeCommand());
+//            setJoystickButtonWhilePressedCommand(gamepad, 5, new FlywheelOuttakeCommand());
+//            setJoystickButtonWhenPressedCommand(gamepad, 2, new ToggleCubeClamp());
+//            setJoystickButtonWhenPressedCommand(gamepad, 10, new SetDriveModeCommand(DriveMode.TANK));
+//            setJoystickButtonWhenPressedCommand(gamepad, 11, new SetDriveModeCommand(DriveMode.ARCADE));
+//            setJoystickButtonWhenPressedCommand(gamepad, 12, new SetDriveModeCommand(DriveMode.CHEEZY));
+//        }
 	}
 	
 	//Gets the Y direction of the left drive joystick
 	public double getLeftY() {
-		return leftJoy.getY();
+	    return leftJoy.getY();
+	}
+	
+	//Gets the Y direction of the left drive joystick
+	public double getLeftX() {
+		return leftJoy.getX();
 	}
 	
 	//Gets the Y direction of the right drive joystick
@@ -68,14 +93,24 @@ public class OI {
 	
 	//Gets the Y direction of the secondary joystick
 	public double getSecondaryY() {
-		return secondaryJoy.getY();
+	    return secondaryJoy.getY();
 	}
 	
-	private void setJoystickButtonWhenPressedCommand(Joystick joystick, int button, Command command) {
+	//Gets the Y direction of the secondary joystick
+	public double getGamepadLeftY() {
+	    return gamepad.getY(Hand.kLeft);
+	}
+	
+	//Gets the Y direction of the secondary joystick
+	public double getGamepadRightY() {
+		return gamepad.getY(Hand.kRight);
+	}
+	
+	private void setJoystickButtonWhenPressedCommand(GenericHID joystick, int button, Command command) {
 		new JoystickButton(joystick, button).whenPressed(command);
 	}
 
-	private void setJoystickButtonWhilePressedCommand(Joystick joystick, int button, Command command) {
+	private void setJoystickButtonWhilePressedCommand(GenericHID joystick, int button, Command command) {
 		new JoystickButton(joystick, button).whileHeld(command);
 	}
 }

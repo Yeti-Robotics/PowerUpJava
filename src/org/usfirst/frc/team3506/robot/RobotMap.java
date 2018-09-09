@@ -14,7 +14,7 @@ package org.usfirst.frc.team3506.robot;
  */
 public class RobotMap {
 	// Physical Constants
-	public static final double WHEEL_DIAMETER = 5.875 / 12.0; // inches
+	public static final double WHEEL_DIAMETER = 5.875; // inches
 	public static final double PULSES_PER_REVOLUTION = 2048;
 	public static final double DISTANCE_PER_PULSE = Math.PI * WHEEL_DIAMETER / PULSES_PER_REVOLUTION;
 
@@ -22,6 +22,8 @@ public class RobotMap {
 	public static final int LEFT_JOYSTICK = 0;
 	public static final int RIGHT_JOYSTICK = 1;
 	public static final int SECONDARY_JOYSTICK = 2;
+	public static final int GAMEPAD = 3;
+	public static final boolean USE_GAMEPAD = false;
 
 	// Drive train sparks
 	public static final int LEFT_1_SPARK = 0;
@@ -45,7 +47,7 @@ public class RobotMap {
 	// Elevator Speeds
 	public static final double ELEVATOR_UP_SPEED = 1;
 	public static final double ELEVATOR_DOWN_SPEED = -.75;
-	public static final double ELEVATOR_STOP_SPEED = 0;
+	public static final double ELEVATOR_STOP_SPEED = 0.08;
 
 	// Flywheel talons
 	public static final int LEFT_FLYWHEEL_TALON = 3;
@@ -61,6 +63,7 @@ public class RobotMap {
 
 	// Wrist talon
 	public static final int WRIST_TALON = 2;
+	public static final double WRIST_STOP_POWER = 0.125;
 
 	// Drive train solenoid
 	public static final int[] DRIVE_TRAIN_SHIFT = { 6, 7 };

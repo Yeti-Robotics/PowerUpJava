@@ -7,38 +7,33 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForwardWithEncoders extends Command {
+public class DriveStraightForTimeCommand extends Command {
 
-	double distance, power;
+	double time, power;
 	
-    public DriveForwardWithEncoders(double distance, double power) {
-    	this.distance = distance;
+    public DriveStraightForTimeCommand(double time, double power) {
+    	this.time = time;
     	this.power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	Robot.drivetrainSubsystem.resetEncoders();
+      setTimeout(time);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrainSubsystem.tankDrive(-power, -power);
+    	Robot.drivetrainSubsystem.tankDrive(power, power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-//        if (distance <= ((Robot.leftDrivetrainSubsystem.getLeftEncoderValue() + Robot.leftDrivetrainSubsystem.getRightEncoderValue()) / 2)){
-        	return true;
-//        }
-//        else {
-//        	return false;
-//        }
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-//    	Robot.leftDrivetrainSubsystem.tankDrive(0, 0);
+    	Robot.drivetrainSubsystem.tankDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

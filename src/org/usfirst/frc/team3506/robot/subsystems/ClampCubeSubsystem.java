@@ -20,12 +20,12 @@ private DoubleSolenoid shifter;
 	
 	//Clamps the pistons
 	public void clampPistons() {
-		shifter.set(Value.kForward);
+		shifter.set(Value.kReverse);
 	}
 	
 	//Unclamps the pistons
 	public void unclampPistons() {
-		shifter.set(Value.kReverse);
+		shifter.set(Value.kForward);
 	}
 	
 	//Finds out what position the solenoid is in

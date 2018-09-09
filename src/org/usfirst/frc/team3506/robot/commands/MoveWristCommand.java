@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
+import org.usfirst.frc.team3506.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,7 +20,15 @@ public class MoveWristCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.wristSubsystem.joystickControl(Robot.oi.getSecondaryY());
+        if (RobotMap.USE_GAMEPAD) {
+            Robot.wristSubsystem.joystickControl(-Robot.oi.getGamepadLeftY());
+        } else {
+            if (Math.abs(Robot.oi.getSecondaryY()) <= RobotMap.WRIST_STOP_POWER) {
+                Robot.wristSubsystem.joystickControl(RobotMap.WRIST_STOP_POWER);
+            } else {
+                Robot.wristSubsystem.joystickControl(Robot.oi.getSecondaryY());
+            }
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

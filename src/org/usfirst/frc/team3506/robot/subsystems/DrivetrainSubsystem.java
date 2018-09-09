@@ -76,8 +76,7 @@ public class DrivetrainSubsystem extends Subsystem {
 
 	// Prints drive encoder values to the console
 	public void printEncoders() {
-//		System.out.println("RIGHT DRIVE ENCODER: " + rightEnc.getDistance());
-//		System.out.println("LEFT DRIVE ENCODER: " + leftEnc.getDistance());
+	    System.out.println(rightEnc.getDistance() + ", " + leftEnc.getDistance());
 	}
 
 	public double getRightEncoderValue() {
@@ -107,7 +106,7 @@ public class DrivetrainSubsystem extends Subsystem {
 	}
 
 	public void tankDrive(double left, double right) {
-		differentialDrive.tankDrive(left, right);
+		differentialDrive.tankDrive(-left, right);
 	}
 	
 	public void arcadeDrive(double forward, double rotation) {
