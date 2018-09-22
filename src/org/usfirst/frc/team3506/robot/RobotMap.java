@@ -13,6 +13,13 @@ package org.usfirst.frc.team3506.robot;
  * me through this
  */
 public class RobotMap {
+    //Camera constants
+    public static final int CAMERA_ID = 0;
+    public static final int CAMERA_BRIGHTNESS = 100;
+    public static final int CAMERA_EXPOSURE = 50;
+    public static final int CAMERA_RESOULUTION_WIDTH = 640;
+    public static final int CAMERA_RESOULUTION_HEIGHT = 480;
+    
 	// Physical Constants
 	public static final double WHEEL_DIAMETER = 5.875; // inches
 	public static final double PULSES_PER_REVOLUTION = 2048;

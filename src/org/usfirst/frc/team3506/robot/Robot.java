@@ -17,6 +17,7 @@ import org.usfirst.frc.team3506.robot.subsystems.FlywheelSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ShiftGearsSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.WristSubsystem;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
 	public static WristSubsystem wristSubsystem;
 	public static ShiftGearsSubsystem shiftGearsSubsystem;
 	public static ClampCubeSubsystem clampCubeSubsystem;
+	public static UsbCamera camera;
 
 	public SendableChooser<AutoModes> autoChooser;
 
@@ -68,7 +70,10 @@ public class Robot extends TimedRobot {
 		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
 		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
-		CameraServer.getInstance().startAutomaticCapture(0);
+		camera = CameraServer.getInstance().startAutomaticCapture(RobotMap.CAMERA_ID);
+		camera.setBrightness(RobotMap.CAMERA_BRIGHTNESS);
+        camera.setExposureManual(RobotMap.CAMERA_EXPOSURE);
+        camera.setResolution(RobotMap.CAMERA_RESOULUTION_WIDTH, RobotMap.CAMERA_RESOULUTION_HEIGHT);
 	}
 
 	/**
