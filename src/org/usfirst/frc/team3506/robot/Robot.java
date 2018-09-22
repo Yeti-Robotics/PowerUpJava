@@ -7,14 +7,9 @@
 
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.Robot.AutoModes;
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchLeftAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchRightAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardAutonomous;
-import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideLeftScaleAutonomous;
-import org.usfirst.frc.team3506.robot.autoRoutines.LeftSideRightScaleAutonomous;
-import org.usfirst.frc.team3506.robot.autoRoutines.RightSideLeftScaleAutonomous;
-import org.usfirst.frc.team3506.robot.autoRoutines.RightSideRightScaleAutonomous;
 import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
@@ -22,6 +17,7 @@ import org.usfirst.frc.team3506.robot.subsystems.FlywheelSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ShiftGearsSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.WristSubsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -72,6 +68,7 @@ public class Robot extends TimedRobot {
 		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
 		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
+		CameraServer.getInstance().startAutomaticCapture(0);
 	}
 
 	/**
