@@ -55,6 +55,9 @@ public class RobotMap {
 	public static final double ELEVATOR_UP_SPEED = 1;
 	public static final double ELEVATOR_DOWN_SPEED = -.75;
 	public static final double ELEVATOR_STOP_SPEED = 0.08;
+    public static final int ELEVATOR_CONTINUOUS_CURRENT_LIMIT= 15; // Amps
+    public static final int ELEVATOR_PEAK_CURRENT_LIMIT= 30; // Amps
+    public static final int ELEVATOR_PEAK_CURRENT_DURATION= 200; // ms
 
 	// Flywheel talons
 	public static final int LEFT_FLYWHEEL_TALON = 3;
@@ -64,9 +67,9 @@ public class RobotMap {
 	public static final double FLYWHEEL_INTAKE_SPEED = 1;
 	public static final double FLYWHEEL_OUTTAKE_SPEED = -.75;
 	public static final double FLYWHEEL_STOP_SPEED = 0;
-	public static final int CONTINUOUS_CURRENT_LIMIT= 20; // Amps
-	public static final int PEAK_CURRENT_LIMIT= 35; // Amps
-	public static final int PEAK_CURRENT_DURATION= 200; // ms
+	public static final int FLYWHEEL_CONTINUOUS_CURRENT_LIMIT= 20; // Amps
+	public static final int FLYWHEEL_PEAK_CURRENT_LIMIT= 35; // Amps
+	public static final int FLYWHEEL_PEAK_CURRENT_DURATION= 200; // ms
 
 	// Wrist talon
 	public static final int WRIST_TALON = 2;

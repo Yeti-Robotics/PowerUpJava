@@ -21,9 +21,9 @@ public class WristSubsystem extends Subsystem {
 		wrist = new WPI_TalonSRX(RobotMap.WRIST_TALON);
 		
 		//Enabling current limiting for left and right flywheel talons
-		wrist.configContinuousCurrentLimit(RobotMap.CONTINUOUS_CURRENT_LIMIT, 0);
-		wrist.configPeakCurrentLimit(RobotMap.PEAK_CURRENT_LIMIT, 0);
-		wrist.configPeakCurrentDuration(RobotMap.PEAK_CURRENT_DURATION, 0);
+		wrist.configContinuousCurrentLimit(RobotMap.FLYWHEEL_CONTINUOUS_CURRENT_LIMIT, 0);
+		wrist.configPeakCurrentLimit(RobotMap.FLYWHEEL_PEAK_CURRENT_LIMIT, 0);
+		wrist.configPeakCurrentDuration(RobotMap.FLYWHEEL_PEAK_CURRENT_DURATION, 0);
         wrist.enableCurrentLimit(true);
 		
 		wrist.setNeutralMode(NeutralMode.Brake);

@@ -28,14 +28,14 @@ private WPI_TalonSRX leftElevator, rightElevator;
 		rightElevator.setNeutralMode(NeutralMode.Brake);
 		
 		//Enabling current limiting for left and right flywheel talons
-        leftElevator.configContinuousCurrentLimit(RobotMap.CONTINUOUS_CURRENT_LIMIT, 0);
-        leftElevator.configPeakCurrentLimit(RobotMap.PEAK_CURRENT_LIMIT, 0);
-        leftElevator.configPeakCurrentDuration(RobotMap.PEAK_CURRENT_DURATION, 0);
+        leftElevator.configContinuousCurrentLimit(RobotMap.ELEVATOR_CONTINUOUS_CURRENT_LIMIT, 0);
+        leftElevator.configPeakCurrentLimit(RobotMap.ELEVATOR_PEAK_CURRENT_LIMIT, 0);
+        leftElevator.configPeakCurrentDuration(RobotMap.ELEVATOR_PEAK_CURRENT_DURATION, 0);
         leftElevator.enableCurrentLimit(true);
         
-        rightElevator.configContinuousCurrentLimit(RobotMap.CONTINUOUS_CURRENT_LIMIT, 0);
-        rightElevator.configPeakCurrentLimit(RobotMap.PEAK_CURRENT_LIMIT, 0);
-        rightElevator.configPeakCurrentDuration(RobotMap.PEAK_CURRENT_DURATION, 0);
+        rightElevator.configContinuousCurrentLimit(RobotMap.ELEVATOR_CONTINUOUS_CURRENT_LIMIT, 0);
+        rightElevator.configPeakCurrentLimit(RobotMap.ELEVATOR_PEAK_CURRENT_LIMIT, 0);
+        rightElevator.configPeakCurrentDuration(RobotMap.ELEVATOR_PEAK_CURRENT_DURATION, 0);
         rightElevator.enableCurrentLimit(true);
 	}
 
