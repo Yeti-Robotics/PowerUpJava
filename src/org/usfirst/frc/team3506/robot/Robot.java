@@ -67,8 +67,8 @@ public class Robot extends TimedRobot {
 		autoChooser = new SendableChooser<AutoModes>();
 		autoChooser.addDefault("Drive forward", AutoModes.DRIVE_FORWARD);
 		autoChooser.addObject("Center switch", AutoModes.CENTER_SWITCH);
-		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
-		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
+//		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
+//		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
 		camera = CameraServer.getInstance().startAutomaticCapture(RobotMap.CAMERA_ID);
 		camera.setBrightness(RobotMap.CAMERA_BRIGHTNESS);
