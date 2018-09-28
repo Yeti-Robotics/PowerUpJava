@@ -10,6 +10,7 @@ package org.usfirst.frc.team3506.robot;
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchLeftAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.CenterSwitchRightAutonomous;
 import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardAutonomous;
+import org.usfirst.frc.team3506.robot.autoRoutines.DriveForwardTimeAutonomous;
 import org.usfirst.frc.team3506.robot.subsystems.ClampCubeSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DrivetrainSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.ElevatorSubsystem;
@@ -45,7 +46,7 @@ public class Robot extends TimedRobot {
 	public SendableChooser<AutoModes> autoChooser;
 
 	public static enum AutoModes {
-		DRIVE_FORWARD, CENTER_SWITCH, LEFT_SCALE, RIGHT_SCALE
+		DRIVE_FORWARD, CENTER_SWITCH, LEFT_SCALE, RIGHT_SCALE, DRIVE_FORWARD_TIME
 	};
 
 	// TODO: Auto
@@ -67,6 +68,7 @@ public class Robot extends TimedRobot {
 		autoChooser = new SendableChooser<AutoModes>();
 		autoChooser.addDefault("Drive forward", AutoModes.DRIVE_FORWARD);
 		autoChooser.addObject("Center switch", AutoModes.CENTER_SWITCH);
+		autoChooser.addObject("Drive forward (time)", AutoModes.DRIVE_FORWARD_TIME);
 //		autoChooser.addObject("Left side scale auto", AutoModes.LEFT_SCALE);
 //		autoChooser.addObject("Right side scale auto", AutoModes.RIGHT_SCALE);
 		SmartDashboard.putData("Auto Chooser", autoChooser);
@@ -121,6 +123,9 @@ public class Robot extends TimedRobot {
                     System.out.println("center right");
     			}
     			break;
+    		case DRIVE_FORWARD_TIME:
+    		    autonomousCommand = new DriveForwardTimeAutonomous();
+    		    break;
 //    		case LEFT_SCALE:
 //    		    System.out.println("left scale");
 //    			if (gameData.charAt(1) == 'L') {
@@ -164,7 +169,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-//		drivetrainSubsystem.printEncoders();
+		drivetrainSubsystem.printEncoders();
 	}
 
 	@Override
@@ -184,7 +189,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-//		drivetrainSubsystem.printEncoders();
+		drivetrainSubsystem.printEncoders();
 	}
 
 	/**
