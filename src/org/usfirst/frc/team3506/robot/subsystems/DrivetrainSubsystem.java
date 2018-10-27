@@ -54,8 +54,8 @@ public class DrivetrainSubsystem extends Subsystem {
 		left3.setInverted(true);
 		right1.setInverted(true);
 
-		SmartDashboard.putNumber("Left drive distance", getLeftEncoderValue());
-		SmartDashboard.putNumber("Right drive distance", getRightEncoderValue());
+		SmartDashboard.putData("Left drive distance", leftEnc);
+		SmartDashboard.putData("Right drive distance", rightEnc);
 		
 		driveMode = DriveMode.TANK;
 	}

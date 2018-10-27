@@ -27,6 +27,8 @@ public class WristSubsystem extends Subsystem {
         wrist.enableCurrentLimit(true);
 		
 		wrist.setNeutralMode(NeutralMode.Brake);
+		
+		wrist.setInverted(true);
 	}
 	
 	//Allows variable movement using a joystick

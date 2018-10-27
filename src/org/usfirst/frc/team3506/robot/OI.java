@@ -78,7 +78,7 @@ public class OI {
 	
 	//Gets the Y direction of the secondary joystick
 	public double getSecondaryY() {
-	    return secondaryJoy.getY();
+	    return secondaryJoy.getY()*RobotMap.WRIST_MODIFIER;
 	}
 	
 	//Gets the Y direction of the secondary joystick

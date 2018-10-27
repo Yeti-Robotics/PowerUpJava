@@ -73,7 +73,8 @@ public class RobotMap {
 
 	// Wrist talon
 	public static final int WRIST_TALON = 2;
-	public static final double WRIST_STOP_POWER = 0.125;
+	public static final double WRIST_STOP_POWER = 0.23;
+	public static final double WRIST_MODIFIER = .8;
 
 	// Drive train solenoid
 	public static final int[] DRIVE_TRAIN_SHIFT = { 6, 7 };
